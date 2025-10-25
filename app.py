@@ -1,3 +1,6 @@
+import pymysql
+pymysql.install_as_MySQLdb()
+
 from flask import Flask
 from config import Config
 from extensions import db
@@ -49,4 +52,5 @@ print("Blueprints consagrados correctamente")
 
 # Ejecutar la app
 if __name__ == '__main__':
+
     app.run(debug=True)
