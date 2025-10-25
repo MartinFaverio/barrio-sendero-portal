@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Editar Proveedor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+
+<body style="padding-top: 70px;">
+    {% include 'navbar.html' %}
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow border-primary">
+                    <div class="card-header bg-light">
+                        <h4 class="mb-0">✏️ Editar proveedor</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ url_for('admin_bp.editar_proveedor', id=proveedor.id) }}" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">🏪 Nombre</label>
+                                <input type="text" name="nombre" id="nombre" value="{{ proveedor.nombre }}" required
+                                    class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">📝 Descripción</label>
+                                <textarea name="descripcion" id="descripcion" class="form-control"
+                                    rows="3">{{ proveedor.descripcion }}</textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="rubro_id" class="form-label">📂 Rubro</label>
+                                <select name="rubro_id" id="rubro_id" class="form-select">
+                                    {% for rubro in rubros %}
+                                    <option value="{{ rubro.id }}" {% if rubro.id==proveedor.rubro_id %}selected{% endif
+                                        %}>
+                                        {{ rubro.nombre }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="latitud" class="form-label">📍 Latitud</label>
+                                    <input type="text" name="latitud" id="latitud" class="form-control"
+                                        value="{{ proveedor.latitud }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="longitud" class="form-label">📍 Longitud</label>
+                                    <input type="text" name="longitud" id="longitud" class="form-control"
+                                        value="{{ proveedor.longitud }}">
+                                </div>
+                            </div>
+
+                            <div class="form-check mt-4">
+                                <input class="form-check-input" type="checkbox" name="emergencia" id="emergencia" {% if
+                                    proveedor.emergencia %}checked{% endif %}>
+                                <label class="form-check-label" for="emergencia">🚨 Servicio de emergencia</label>
+                            </div>
+
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" name="atencion_24hs" id="atencion_24hs"
+                                    {% if proveedor.atencion_24hs %}checked{% endif %}>
+                                <label class="form-check-label" for="atencion_24hs">🕒 Atención 24hs</label>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">🖼 Imagen actual</label><br>
+                                <img src="{{ url_for('static', filename='img_proveedores/' ~ proveedor.foto_nombre) }}"
+                                    alt="Logo actual" class="img-fluid mb-2" style="max-height: 150px;">
+                                <input type="file" name="foto" class="form-control">
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+                                <a href="{{ url_for('admin_bp.panel_admin') }}" class="btn btn-outline-secondary">
+                                    <i class="bi bi-arrow-left-circle"></i> Cancelar
+                                </a>
+                                <button type="submit" class="btn btn-outline-primary">
+                                    <i class="bi bi-check-circle"></i> Guardar cambios
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

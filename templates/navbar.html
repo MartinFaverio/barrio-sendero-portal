@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- templates/navbar.html -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <!-- Botón sandwich -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenido del navbar -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Logo Barrio Sendero -->
+                <a class="navbar-brand fw-bold text-primary d-flex align-items-center"
+                    href="{{ url_for('publicas_bp.index') }}">
+                    <i class="bi bi-tree-fill me-2 fs-4 text-success"></i>
+                    <span class="fs-5">Barrio <span class="text-dark">Sendero</span></span>
+                </a>
+
+                <!-- Espaciador -->
+                <div class="me-auto"></div>
+
+                <!-- Acceso proveedor -->
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-success fw-semibold d-flex align-items-center" href="#"
+                            role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-workspace me-1 fs-5"></i>
+                            <span class="fs-6">Proveedor</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="{{ url_for('sesion_bp.login_proveedor') }}">
+                                    🔑 Ingresar
+                                </a>
+                            </li>
+                            <!-- <li>
+                            <a class="dropdown-item" href="{{ url_for('proveedores_bp.ver_proveedores') }}">
+                                📝 Registrarse
+                            </a>
+                        </li> -->
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Usuario logueado -->
+                <div class="d-flex align-items-center ms-3">
+                    <span class="me-3">
+                        Usuario Logueado:
+                        {% if session.get('es_admin') %}
+                        <strong>👑 Administrador</strong>
+                        {% elif session.get('visitante_nombre') %}
+                        <strong>{{ session['visitante_nombre'] }}</strong>
+                        {% else %}
+                        <em>Invitado</em>
+                        {% endif %}
+                    </span>
+
+                    {% if session.get('visitante_id') %}
+                    <a href="{{ url_for('visitante_bp.logout_visitante') }}" class="btn btn-outline-danger btn-sm">
+                        🔓 Cerrar sesión
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

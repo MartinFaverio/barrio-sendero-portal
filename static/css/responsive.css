@@ -1,0 +1,119 @@
+/* === Escalado adaptativo === */
+html {
+    font-size: 100%;
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 90%;
+    }
+}
+
+@media (min-width: 1600px) {
+    html {
+        font-size: 105%;
+    }
+}
+
+/* === Imágenes === */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* === Iframes (YouTube, etc.) === */
+iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+}
+
+/* === Mapa === */
+#map {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}
+
+@media (min-width: 992px) {
+    #map {
+        height: 400px;
+    }
+}
+
+@media (min-width: 1400px) {
+    #map {
+        height: 500px;
+    }
+}
+
+/* === Cards de proveedores === */
+.card-proveedor {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+}
+
+@media (min-width: 1400px) {
+    .card-proveedor {
+        font-size: 1.1rem;
+    }
+}
+
+/* === Texto adaptable === */
+h1,
+h2,
+h3 {
+    word-break: break-word;
+}
+
+p,
+.lead,
+.card-text {
+    font-size: 1rem;
+}
+
+/* === Navbar sandwich === */
+/* Navbar solo colapsa en móviles */
+@media (max-width: 768px) {
+    .navbar-collapse {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+/* === Footer === */
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 1rem;
+}
+
+/* === Espaciado en móviles === */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .bienvenida h1 {
+        font-size: 1.5rem;
+    }
+
+    .bienvenida p {
+        font-size: 1rem;
+    }
+
+    .card-title {
+        font-size: 1rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,20 @@
+rubro_iconos = {
+    'Carniceria':     {'icono': 'bi-basket-fill',   'color': 'text-danger'},
+    'Panaderia':      {'icono': 'bi-cupcake',       'color': 'text-warning'},
+    'Gastronomia':    {'icono': 'bi-egg-fried',     'color': 'text-success'},
+    'Ferreteria':     {'icono': 'bi-tools',         'color': 'text-secondary'},
+    'Verduleria':     {'icono': 'bi-flower3',       'color': 'text-success'},
+    'Peluqueria':     {'icono': 'bi-scissors',      'color': 'text-info'},
+    'Veterinaria':    {'icono': 'bi-heart-pulse',   'color': 'text-danger'},
+    'Libreria':       {'icono': 'bi-book',          'color': 'text-primary'},
+    'Salud':          {'icono': 'bi-hospital',      'color': 'text-danger'},
+    'Electricidad':   {'icono': 'bi-lightning',     'color': 'text-warning'},
+    'Masajes':        {'icono': 'bi-person-check-fill', 'color': 'text-success'},
+    'Desayunos':      {'icono': 'bi-cup-hot-fill',    'color': 'text-warning'},
+    'Farmacia':       {'icono': 'bi-prescription2',   'color': 'text-primary'},
+    'Transporte':     {'icono': 'bi-taxi-front-fill', 'color': 'text-warning'},
+    'Escolar':        {'icono': 'bi-backpack2',       'color': 'text-info'},
+    'Perfumeria':     {'icono': 'bi-eyedropper',       'color': 'text-info'},
+    'Indumentaria':   {'icono': 'bi-flower3',       'color': 'text-success'},
+    'Otros':          {'icono': 'bi-shop',          'color': 'text-muted'}
+}

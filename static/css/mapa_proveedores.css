@@ -1,0 +1,56 @@
+/* 🌍 Contenedor del mapa */
+#map {
+    height: 300px;
+    /* antes era 600px o full */
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    margin-bottom: 40px;
+    border: 2px solid #0d6efd;
+    animation: fadeIn 0.8s ease-in;
+}
+
+/* 📌 Popup Leaflet */
+.leaflet-popup-content {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #2c3e50;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.leaflet-popup-content strong {
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+.leaflet-popup-content a {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    border: 1px solid #0d6efd;
+    color: #0d6efd;
+    border-radius: 6px;
+    text-decoration: none;
+    background-color: #f0f8ff;
+    transition: all 0.2s ease;
+}
+
+.leaflet-popup-content a:hover {
+    background-color: #dbeeff;
+    color: #084298;
+    border-color: #084298;
+}
+
+/* 🌀 Animación de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

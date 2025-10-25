@@ -1,0 +1,120 @@
+/* Cartel de bienvenida */
+body {
+    padding-top: 70px;
+}
+
+.bienvenida {
+    background-color: #f8f9fc;
+    border: 1px solid #dee2e6;
+    border-radius: 8px; /* antes 12px */
+    padding: 10px 14px; /* antes 30px */
+    margin-bottom: 2rem; /* opcional: reducir si hace falta */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05); /* más sutil */
+    animation: fadeIn 0.8s ease-in;
+}
+
+.bienvenida h1 {
+    font-weight: 600;
+    color: #2C3E50;
+    margin-bottom: 0.5rem;
+}
+
+.bienvenida p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* Cards de proveedores */
+.card-proveedor {
+    max-width: 220px; /* antes ~320px, reducción del 30% */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Achicar cards */
+.card {
+    padding: 6px;
+    font-size: 0.85rem;
+}
+
+.card-body {
+    padding: 8px 10px;
+}
+
+.card-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.card.border-info {
+    border-width: 2px;
+    border-color: #17a2b8;
+}
+
+.card-body p {
+    color: #666;
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.card-body .btn {
+    align-self: flex-start;
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+}
+
+/* Imagen más chica */
+.card-img-top {
+    max-height: 100px;
+}
+
+/* Badges más compactos */
+.badge {
+    font-size: 0.7rem;
+    padding: 3px 5px;
+}
+
+.row.g-4 {
+    row-gap: 0.4rem;
+    column-gap: 0.4rem;
+}
+
+/* Iconografía */
+.bi {
+    font-size: 1.5rem;
+    color: #4A90E2;
+    transition: color 0.3s ease;
+}
+
+.bi:hover {
+    color: #1E70BF;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+footer i {
+    font-size: 1.2rem;
+    color: #17a2b8;
+    margin-right: 6px;
+}
+
+/* Animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

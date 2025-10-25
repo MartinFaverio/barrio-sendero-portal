@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Proveedor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+
+<body style="padding-top: 70px;">
+    {% include 'navbar.html' %}
+
+    <div class="container mt-4">
+        <h1 class="mb-4">Registrar nuevo proveedor</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Nombre:</label>
+                <input type="text" name="nombre" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Rubro:</label>
+                <select name="rubro_id" class="form-select">
+                    {% for rubro in rubros %}
+                    <option value="{{ rubro.id }}">{{ rubro.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descripción:</label>
+                <textarea name="descripcion" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Teléfono:</label>
+                <input type="text" name="telefono" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <input type="email" name="email" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Contraseña:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Dirección:</label>
+                <input type="text" name="direccion" class="form-control">
+            </div>
+
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="emergencia" id="emergencia">
+                <label class="form-check-label" for="emergencia">¿Atiende emergencias?</label>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="atencion_24hs" id="atencion_24hs">
+                <label class="form-check-label" for="atencion_24hs">¿Disponible 24hs?</label>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Logo del proveedor:</label>
+                <input type="file" name="foto" class="form-control" accept=".png,.jpg,.jpeg,.webp">
+            </div>
+
+            <!-- 🧭 Coordenadas para el mapa -->
+            <div class="mb-3">
+                <label class="form-label">Latitud:</label>
+                <input type="text" name="latitud" class="form-control" placeholder="-34.4167">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Longitud:</label>
+                <input type="text" name="longitud" class="form-control" placeholder="-58.6500">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Agregar proveedor</button>
+        </form>
+    </div>
+</body>
+
+</html>

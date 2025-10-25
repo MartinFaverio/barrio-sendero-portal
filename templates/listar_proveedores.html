@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS e icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/listar_proveedores.css') }}">
+    <!-- Bootstrap JS (para el menú sandwich) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Proveedores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+</head>
+
+<!-- GENERA CATALOGO DE PROVEEDORES REGISTRADOS -->
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        <div class="text-center mb-4 bienvenida">
+            <h1 class="display-5">📜 Listado de proveedores</h1>
+            <p class="lead">Explorá todos los servicios registrados en el portal.</p>
+        </div>
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+            {% for item in proveedores %}
+            <div class="col">
+                <div class="card h-100 shadow border-info card-proveedor">
+                    <img src="{{ url_for('static', filename='img_proveedores/' + item.proveedor.foto_nombre) }}"
+                        class="card-img-top" alt="Logo de {{ item.proveedor.nombre }}"
+                        style="max-height: 100px; object-fit: contain;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">
+                            <i class="bi {{ item.icono }} {{ item.color }} fs-4 me-2"></i>
+                            {{ item.proveedor.nombre }}
+                        </h5>
+                        <div class="mb-2">
+                            {% if item.proveedor.emergencia %}
+                            <span class="badge bg-danger me-2">Emergencias</span>
+                            {% endif %}
+                            {% if item.proveedor.atencion_24hs %}
+                            <span class="badge bg-warning text-dark">24hs</span>
+                            {% endif %}
+                        </div>
+                        <p class="text-muted">{{ item.proveedor.rubro.nombre }}</p>
+                        <a href="{{ url_for('proveedores_bp.ver_proveedor', id=item.proveedor.id) }}"
+                            class="btn btn-outline-primary mt-auto">Ver más</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        <i class="bi bi-people-fill"></i> Portal Barrio Sendero • Comunidad Nordelta
+    </footer>
+</body>
+
+</html>
