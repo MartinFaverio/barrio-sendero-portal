@@ -10,8 +10,9 @@ class Visitante(db.Model):
     nombre = Column(String(100), nullable=False)
     email = Column(String(150), unique=True, nullable=False)
     contraseña_hash = Column(String(255), nullable=False)
-    confirmado = Column(Boolean, default=False)
+    confirmado = db.Column(db.Boolean, default=False)
     fecha_registro = Column(DateTime, default=datetime.now)
 
     opiniones_producto = relationship("OpinionProducto", back_populates="visitante")
+
     opiniones_proveedor = relationship("OpinionProveedor", back_populates="visitante")
