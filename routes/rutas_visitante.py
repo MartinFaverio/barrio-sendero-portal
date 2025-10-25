@@ -28,14 +28,10 @@ def registro_visitante():
         db.session.add(nuevo)
         db.session.commit()
 
-        token = str(uuid.uuid4())
-        confirmacion = Confirmacion(visitante_id=nuevo.id, token=token)
-        db.session.add(confirmacion)
+        nuevo.confirmado = True
         db.session.commit()
 
-        link = url_for('visitante_bp.confirmar', token=token, _external=True)
-        enviar_mail_confirmacion(email, link)
-        flash('Registro exitoso. Revisá tu correo para confirmar tu cuenta.')
+        flash('Registro exitoso. Ya podés ingresar con tu cuenta.')
         return redirect(url_for('publicas_bp.index'))
 
     return render_template('registro_visitante.html')
@@ -88,5 +84,6 @@ def logout_visitante():
     session.pop('visitante_nombre', None)
     flash('Sesión cerrada correctamente.')
     return redirect(url_for('publicas_bp.index'))
+
 
 
