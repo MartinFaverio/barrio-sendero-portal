@@ -1,31 +1,21 @@
-import pymysql
-import os
-from dotenv import load_dotenv
+from app import app
+from extensions import db
+from models.rubro import Rubro
 
-load_dotenv(dotenv_path='data.env')
+with app.app_context():
+    db.create_all()
 
-# Obtener credenciales desde .env
-user = os.getenv('DB_USER')
-password = os.getenv('DB_PASSWORD')
-db_name = os.getenv('DB_NAME')
+    rubros_iniciales = [
+        'Carniceria', 'Panaderia', 'Gastronomia', 'Ferreteria', 'Verduleria',
+        'Desayunos', 'Electricidad', 'Escolar', 'Farmacia', 'Libreria',
+        'Masajes', 'Otros', 'Peluqueria', 'Perfumeria', 'Salud',
+        'Transporte', 'Veterinaria'
+    ]
 
-# Conexión sin seleccionar base
-connection = pymysql.connect(
-    host='localhost',
-    user=user,
-    password=password
-)
+    for nombre in rubros_iniciales:
+        if not Rubro.query.filter_by(nombre=nombre).first():
+            db.session.add(Rubro(nombre=nombre))
 
-cursor = connection.cursor()
+    db.session.commit()
 
-# Crear base si no existe
-cursor.execute(f"""
-    CREATE DATABASE IF NOT EXISTS {db_name}
-    CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci;
-""")
-
-print(f"✅ Base de datos '{db_name}' verificada o creada correctamente.")
-
-cursor.close()
-connection.close()
+print("✅ Rubros iniciales consagrados correctamente.")
